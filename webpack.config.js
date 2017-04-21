@@ -25,6 +25,10 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: "css-loader!stylus-loader"
         })
+      },
+      {
+        test: /\.(png|jpg)$/,
+        use: 'file-loader?name=/img/[name].[ext]&publicPath=.',
       }
     ]
   },

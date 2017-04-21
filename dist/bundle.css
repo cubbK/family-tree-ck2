@@ -1,6 +1,41 @@
-h1 {
-  color: #ffc0cb;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800);body {
+  font-family: 'Open Sans', sans-serif;
 }
-body {
-  background: #000;
+.tree-view {
+  position: relative;
+  width: 792px;
+  height: 610px;
+  margin: 0 auto;
+  background-image: url(./img/dynatree_tree_illustration_big.png);
+}
+.tree-generations {
+  font-size: 0;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.tree-generations li {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  padding-top: 41px;
+  line-height: 30px;
+}
+.tree-generations li:first-child {
+  padding-left: 79px;
+}
+.tree-generations li:nth-child(2) {
+  padding-left: 70px;
+  font-size: 23px;
+}
+.tree-generations li:nth-child(3) {
+  padding-left: 79px;
+}
+.tree-generations li:nth-child(4) {
+  padding-left: 52px;
+}
+.tree-generations li:nth-child(5) {
+  padding-left: 25px;
+  letter-spacing: -1px;
 }
