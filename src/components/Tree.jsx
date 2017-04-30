@@ -14,7 +14,7 @@ export default class Tree extends React.Component {
                 class: 'father'
             },
             {
-                name: 'James',
+                name: 'Nona',
                 class: 'mother'
             }
         ]

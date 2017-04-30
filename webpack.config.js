@@ -8,7 +8,8 @@ module.exports = {
   entry: path.join(srcPath, 'index.jsx'),
   output: {
     path: buildPath,
-    filename: "bundle.js"
+    filename: "bundle.js",
+    sourceMapFilename: "bundle.js.map",
   },
   module: {
     loaders: [

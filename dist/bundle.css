@@ -57,6 +57,9 @@
   text-align: center;
   letter-spacing: -1px;
   position: absolute;
+  background-image: url(./img/banner-name-default.png);
+  width: 115px;
+  background-position: center;
 }
 .person-main {
   width: 115px;
@@ -69,9 +72,21 @@
   left: -20px;
   font-weight: 700;
   font-size: 17px;
+  background-image: none;
 }
 .person-father {
   width: 80px;
   right: 315px;
   top: 153px;
+}
+.person-father .person-name {
+  margin-left: -15px;
+}
+.person-mother {
+  width: 80px;
+  right: 315px;
+  top: 390px;
+}
+.person-mother .person-name {
+  margin-left: -15px;
 }
