@@ -1,10 +1,12 @@
 import React from 'react';
 import TreeGenerations from './TreeGenerations.jsx';
-export default class Tree extends React.Component {
+import Tree from './Tree.jsx';
+export default class TreeView extends React.Component {
     render() {
         return (
             <div className="tree-view">
                 <TreeGenerations/>
+                <Tree/>
             </div>
         );
     }

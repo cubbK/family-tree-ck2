@@ -41,3 +41,44 @@ body {
         }
     }
 }
+.person {
+    position: absolute;
+    border-radius: 100%;
+    img {
+        &:hover,
+        &:active,
+        &.active,
+        &:focus {
+            cursor: pointer
+        }
+    }
+}
+.person-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    text-align: center
+    letter-spacing: -1px;
+    position: absolute;
+}
+.person-main {
+    width: 115px;
+    left: 212px;
+    top: 245px;
+    .person-name {
+        top: -40px;
+        width: 155px;
+        left: -20px;
+        font-weight: 700;
+        font-size: 17px;
+    }
+}
+.person-father {
+    width: 80px;
+    right: 315px;
+    top: 153px;
+    .person-name {
+        
+    }
+}
