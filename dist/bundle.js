@@ -9605,6 +9605,10 @@ var _react = __webpack_require__(20);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _PersonInfo = __webpack_require__(195);
+
+var _PersonInfo2 = _interopRequireDefault(_PersonInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9624,22 +9628,39 @@ var Person = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Person.__proto__ || Object.getPrototypeOf(Person)).call(this));
 
         _this.image = 'img/portrait.png';
+        _this.state = {
+            isPersonInfoVisible: false
+        };
         return _this;
     }
 
     _createClass(Person, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
+            var personThumbnail = _react2.default.createElement(
                 'div',
                 { className: "person person-" + this.props.class },
-                _react2.default.createElement('img', { src: this.image, alt: '', className: 'img-responsive' }),
+                _react2.default.createElement('img', { src: this.image, alt: '', className: 'img-responsive', onClick: this.handleClick.bind(this) }),
                 _react2.default.createElement(
                     'div',
                     { className: 'person-name' },
                     this.props.name
                 )
             );
+            var visibleInfo = _react2.default.createElement(
+                'div',
+                { className: 'person-zone' },
+                personThumbnail,
+                _react2.default.createElement(_PersonInfo2.default, null)
+            );
+            return this.state.isPersonInfoVisible ? visibleInfo : personThumbnail;
+        }
+    }, {
+        key: 'handleClick',
+        value: function handleClick() {
+            this.setState({
+                isPersonInfoVisible: !this.state.isPersonInfoVisible
+            });
         }
     }]);
 
@@ -9689,7 +9710,7 @@ var Tree = function (_React$Component) {
             name: 'Jane',
             class: 'main'
         }, {
-            name: 'James',
+            name: 'James Habrolvarter',
             class: 'father'
         }, {
             name: 'Nona',
@@ -22311,6 +22332,63 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PersonInfo = function (_React$Component) {
+    _inherits(PersonInfo, _React$Component);
+
+    function PersonInfo() {
+        _classCallCheck(this, PersonInfo);
+
+        return _possibleConstructorReturn(this, (PersonInfo.__proto__ || Object.getPrototypeOf(PersonInfo)).apply(this, arguments));
+    }
+
+    _createClass(PersonInfo, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "person-info" },
+                "info pals "
+            );
+        }
+    }]);
+
+    return PersonInfo;
+}(_react2.default.Component);
+
+exports.default = PersonInfo;
 
 /***/ })
 /******/ ]);

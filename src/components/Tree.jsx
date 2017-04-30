@@ -10,7 +10,7 @@ export default class Tree extends React.Component {
                 class: 'main'
             },
             {
-                name: 'James',
+                name: 'James Habrolvarter',
                 class: 'father'
             },
             {
@@ -25,8 +25,7 @@ export default class Tree extends React.Component {
                 <Person class={val.class} name={val.name} key={index.toString()}></Person>
             )
         })
-        return (
-            
+        return (   
             <div className="content">
                 {persons}
             </div>
