@@ -9556,6 +9556,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+__webpack_require__(200);
+
 var TreeView = function (_React$Component) {
     _inherits(TreeView, _React$Component);
 
@@ -9571,6 +9573,11 @@ var TreeView = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'tree-view' },
+                _react2.default.createElement(
+                    'a',
+                    { href: 'https://github.com/cubbic/family-tree-ck2', className: 'github', title: 'View on Github', target: '_blank' },
+                    _react2.default.createElement('img', { src: 'img/github-logo.png', alt: '', className: 'img-responsive' })
+                ),
                 _react2.default.createElement(_TreeGenerations2.default, null),
                 _react2.default.createElement(_Tree2.default, null)
             );
@@ -24863,6 +24870,21 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */
+/***/ (function(module, exports) {
+
+module.exports = "./img/github-logo.png";
 
 /***/ })
 /******/ ]);
