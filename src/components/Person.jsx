@@ -1,31 +1,33 @@
 import React from 'react';
-import PersonInfo from './PersonInfo.jsx';
-require('../img/portrait.png');
-
-export default class Person extends React.Component {
-    constructor(){
+import Draggable from 'react-draggable'; // The default 
+import PersonThumb from './PersonThumb.jsx';
+require('../img/close-btn.png');
+export default class PersonInfo extends React.Component {
+    constructor() {
         super();
-        this.image = 'img/portrait.png';
         this.state = {
             isPersonInfoVisible: false
         }
     }
     render() {
-        let personThumbnail = (
-            <div className={"person person-" + this.props.class}>
-                <img src={this.image} alt="" className="img-responsive" onClick={this.handleClick.bind(this)}/>
-                <div className="person-name">{this.props.name}</div>
-            </div>
+        let person = (
+            <Draggable >
+                <div className="person-info">
+                    <button className="close-btn" onClick={this.handleClick.bind(this)}>
+                        <img src="img/close-btn.png" alt=""/>
+                    </button>
+                </div>
+            </Draggable> 
         );
-        let visibleInfo = (
+        let personThumb = (<PersonThumb toggleVisibility={this.handleClick.bind(this)} parentProps={this.props}/>);
+        let visibleAll = (
             <div className="person-zone">
-                {personThumbnail}
-                <PersonInfo onClose={this.handleClick.bind(this)}/>
-            </div>    
-        )
-        return (
-            this.state.isPersonInfoVisible ? visibleInfo : personThumbnail
+                {person}
+                {personThumb}
+            </div> 
         );
+        
+        return this.state.isPersonInfoVisible ? visibleAll : personThumb;
     }
     handleClick() {
         this.setState({
