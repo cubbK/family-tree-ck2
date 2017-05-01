@@ -20,7 +20,7 @@ export default class Person extends React.Component {
         let visibleInfo = (
             <div className="person-zone">
                 {personThumbnail}
-                <PersonInfo/>
+                <PersonInfo onClose={this.handleClick.bind(this)}/>
             </div>    
         )
         return (
