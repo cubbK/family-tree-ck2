@@ -9616,7 +9616,7 @@ var _reactDraggable = __webpack_require__(178);
 
 var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
-var _PersonThumb = __webpack_require__(201);
+var _PersonThumb = __webpack_require__(85);
 
 var _PersonThumb2 = _interopRequireDefault(_PersonThumb);
 
@@ -9634,13 +9634,14 @@ __webpack_require__(103);
 var PersonInfo = function (_React$Component) {
     _inherits(PersonInfo, _React$Component);
 
-    function PersonInfo() {
+    function PersonInfo(props) {
         _classCallCheck(this, PersonInfo);
 
         var _this = _possibleConstructorReturn(this, (PersonInfo.__proto__ || Object.getPrototypeOf(PersonInfo)).call(this));
 
         _this.state = {
-            isPersonInfoVisible: false
+            isPersonInfoVisible: false,
+            name: props.name
         };
         return _this;
     }
@@ -9648,20 +9649,22 @@ var PersonInfo = function (_React$Component) {
     _createClass(PersonInfo, [{
         key: 'render',
         value: function render() {
+            console.log(this.state.name);
             var person = _react2.default.createElement(
                 _reactDraggable2.default,
                 null,
                 _react2.default.createElement(
                     'div',
                     { className: 'person-info' },
+                    _react2.default.createElement('input', { type: 'text', className: 'person-info-name', defaultValue: this.state.name, onChange: this.handleName.bind(this) }),
                     _react2.default.createElement(
                         'button',
-                        { className: 'close-btn', onClick: this.handleClick.bind(this) },
+                        { className: 'close-btn', onClick: this.handleVisibility.bind(this) },
                         _react2.default.createElement('img', { src: 'img/close-btn.png', alt: '' })
                     )
                 )
             );
-            var personThumb = _react2.default.createElement(_PersonThumb2.default, { toggleVisibility: this.handleClick.bind(this), parentProps: this.props });
+            var personThumb = _react2.default.createElement(_PersonThumb2.default, { toggleVisibility: this.handleVisibility.bind(this), parentProps: this.props });
             var visibleAll = _react2.default.createElement(
                 'div',
                 { className: 'person-zone' },
@@ -9672,11 +9675,16 @@ var PersonInfo = function (_React$Component) {
             return this.state.isPersonInfoVisible ? visibleAll : personThumb;
         }
     }, {
-        key: 'handleClick',
-        value: function handleClick() {
+        key: 'handleVisibility',
+        value: function handleVisibility() {
             this.setState({
                 isPersonInfoVisible: !this.state.isPersonInfoVisible
             });
+        }
+    }, {
+        key: 'handleName',
+        value: function handleName(event) {
+            this.setState({ name: event.target.value });
         }
     }]);
 
@@ -9686,7 +9694,67 @@ var PersonInfo = function (_React$Component) {
 exports.default = PersonInfo;
 
 /***/ }),
-/* 85 */,
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(14);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+__webpack_require__(105);
+
+var Person = function (_React$Component) {
+    _inherits(Person, _React$Component);
+
+    function Person() {
+        _classCallCheck(this, Person);
+
+        var _this = _possibleConstructorReturn(this, (Person.__proto__ || Object.getPrototypeOf(Person)).call(this));
+
+        _this.image = 'img/portrait.png';
+
+        return _this;
+    }
+
+    _createClass(Person, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: "person person-" + this.props.parentProps.class },
+                _react2.default.createElement('img', { src: this.image, alt: '', className: 'img-responsive', onClick: this.props.toggleVisibility }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'person-name' },
+                    this.props.parentProps.name
+                )
+            );
+        }
+    }]);
+
+    return Person;
+}(_react2.default.Component);
+
+exports.default = Person;
+
+/***/ }),
 /* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24821,76 +24889,6 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(14);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-__webpack_require__(105);
-
-var Person = function (_React$Component) {
-    _inherits(Person, _React$Component);
-
-    function Person() {
-        _classCallCheck(this, Person);
-
-        var _this = _possibleConstructorReturn(this, (Person.__proto__ || Object.getPrototypeOf(Person)).call(this));
-
-        _this.image = 'img/portrait.png';
-
-        return _this;
-    }
-
-    _createClass(Person, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: "person person-" + this.props.parentProps.class },
-                _react2.default.createElement('img', { src: this.image, alt: '', className: 'img-responsive', onClick: this.props.toggleVisibility }),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'person-name' },
-                    this.props.parentProps.name
-                )
-            );
-        }
-    }]);
-
-    return Person;
-}(_react2.default.Component);
-
-exports.default = Person;
 
 /***/ })
 /******/ ]);
