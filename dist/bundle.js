@@ -9659,7 +9659,7 @@ var PersonInfoLook = function (_React$Component) {
                     _react2.default.createElement(
                         'button',
                         { className: 'person-info-look-controls-left', onClick: function onClick(e) {
-                                return _this2.props.changeImage(e, "right");
+                                return _this2.props.changeImage(e, "left");
                             } },
                         _react2.default.createElement('i', { className: 'fa fa-arrow-left', 'aria-hidden': 'true' })
                     ),
@@ -9668,7 +9668,7 @@ var PersonInfoLook = function (_React$Component) {
                         { className: 'person-info-look-controls-right', onClick: function onClick(e) {
                                 return _this2.props.changeImage(e, "right");
                             } },
-                        _react2.default.createElement('i', { className: 'fa fa-arrow-right', 'aria-hidden': 'true', 'data-txt': 'txt' })
+                        _react2.default.createElement('i', { className: 'fa fa-arrow-right', 'aria-hidden': 'true' })
                     )
                 )
             );
@@ -9745,6 +9745,7 @@ var PersonInfo = function (_React$Component2) {
             } else {
                 this.faceImgs = arrayRotate(this.faceImgs, true);
             }
+            console.log(this.faceImgs);
             this.setState({
                 image: 'img/' + this.faceImgs[0]
             });
@@ -9758,7 +9759,12 @@ exports.default = PersonInfo;
 
 
 function arrayRotate(arr, reverse) {
-    if (reverse) arr.unshift(arr.pop());else arr.push(arr.shift());
+    if (reverse) {
+        console.log("it;s true");
+        arr.unshift(arr.pop());
+    } else {
+        arr.push(arr.shift());
+    }
     return arr;
 }
 

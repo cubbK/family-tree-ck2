@@ -11,11 +11,11 @@ class PersonInfoLook extends React.Component {
                     <img src={this.props.image} alt="" />
                 </div>
                 <div className="person-info-look-controls">
-                    <button className="person-info-look-controls-left" onClick={(e) => this.props.changeImage(e, "right")}>
+                    <button className="person-info-look-controls-left" onClick={(e) => this.props.changeImage(e, "left")}>
                         <i className="fa fa-arrow-left" aria-hidden="true"></i>
                     </button>
                     <button className="person-info-look-controls-right" onClick={(e) => this.props.changeImage(e, "right")}>
-                        <i className="fa fa-arrow-right" aria-hidden="true" data-txt="txt"></i>
+                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -78,6 +78,7 @@ export default class PersonInfo extends React.Component {
         } else {
              this.faceImgs = arrayRotate(this.faceImgs ,true);
         }
+        console.log(this.faceImgs)
         this.setState({
             image: 'img/' + this.faceImgs[0]
         })
@@ -85,9 +86,11 @@ export default class PersonInfo extends React.Component {
 }
 
 function arrayRotate(arr, reverse) {
-    if (reverse)
+    if (reverse) {
+        console.log ("it;s true")
         arr.unshift(arr.pop())
-    else
+    } else {
         arr.push(arr.shift())
+    }  
     return arr
 } 
