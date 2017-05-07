@@ -138,3 +138,32 @@
   outline: 0;
   width: 355px;
 }
+.person-info-look-img {
+  position: absolute;
+  left: 70px;
+  top: 120px;
+  width: 160px;
+  height: 160px;
+}
+.person-info-look-img img {
+  width: 100%;
+}
+.person-info-look-controls {
+  position: absolute;
+  top: 290px;
+  left: 120px;
+  font-size: 20px;
+}
+.person-info-look-controls >button {
+  background-color: transparent;
+  border: 0;
+}
+.person-info-look-controls >button:hover,
+.person-info-look-controls >button:active,
+.person-info-look-controls >button.active,
+.person-info-look-controls >button:focus {
+  color: #fd8636;
+  outline: 0;
+}
+
+/*# sourceMappingURL=bundle.css.map*/

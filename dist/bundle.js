@@ -9631,19 +9631,68 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 __webpack_require__(103);
 
-var PersonInfo = function (_React$Component) {
-    _inherits(PersonInfo, _React$Component);
+var PersonInfoLook = function (_React$Component) {
+    _inherits(PersonInfoLook, _React$Component);
+
+    function PersonInfoLook() {
+        _classCallCheck(this, PersonInfoLook);
+
+        return _possibleConstructorReturn(this, (PersonInfoLook.__proto__ || Object.getPrototypeOf(PersonInfoLook)).apply(this, arguments));
+    }
+
+    _createClass(PersonInfoLook, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'person-info-look' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'person-info-look-img' },
+                    _react2.default.createElement('img', { src: this.props.image, alt: '' })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'person-info-look-controls' },
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'person-info-look-controls-left', onClick: function onClick(e) {
+                                return _this2.props.changeImage(e, "right");
+                            } },
+                        _react2.default.createElement('i', { className: 'fa fa-arrow-left', 'aria-hidden': 'true' })
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'person-info-look-controls-right', onClick: function onClick(e) {
+                                return _this2.props.changeImage(e, "right");
+                            } },
+                        _react2.default.createElement('i', { className: 'fa fa-arrow-right', 'aria-hidden': 'true', 'data-txt': 'txt' })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return PersonInfoLook;
+}(_react2.default.Component);
+
+var PersonInfo = function (_React$Component2) {
+    _inherits(PersonInfo, _React$Component2);
 
     function PersonInfo(props) {
         _classCallCheck(this, PersonInfo);
 
-        var _this = _possibleConstructorReturn(this, (PersonInfo.__proto__ || Object.getPrototypeOf(PersonInfo)).call(this));
+        var _this3 = _possibleConstructorReturn(this, (PersonInfo.__proto__ || Object.getPrototypeOf(PersonInfo)).call(this));
 
-        _this.state = {
+        _this3.faceImgs = ['portrait.png', 'portrait2.png', 'portrait3.png'], _this3.state = {
+
             isPersonInfoVisible: false,
-            name: props.name
+            name: props.name,
+            image: 'img/' + _this3.faceImgs[0]
         };
-        return _this;
+        return _this3;
     }
 
     _createClass(PersonInfo, [{
@@ -9661,10 +9710,11 @@ var PersonInfo = function (_React$Component) {
                         'button',
                         { className: 'close-btn', onClick: this.handleVisibility.bind(this) },
                         _react2.default.createElement('img', { src: 'img/close-btn.png', alt: '' })
-                    )
+                    ),
+                    _react2.default.createElement(PersonInfoLook, { image: this.state.image, changeImage: this.changeImage.bind(this) })
                 )
             );
-            var personThumb = _react2.default.createElement(_PersonThumb2.default, { toggleVisibility: this.handleVisibility.bind(this), parentProps: this.props });
+            var personThumb = _react2.default.createElement(_PersonThumb2.default, { toggleVisibility: this.handleVisibility.bind(this), parentProps: this.props, parentState: this.state });
             var visibleAll = _react2.default.createElement(
                 'div',
                 { className: 'person-zone' },
@@ -9685,6 +9735,19 @@ var PersonInfo = function (_React$Component) {
         key: 'handleName',
         value: function handleName(event) {
             this.setState({ name: event.target.value });
+            return this.state.name;
+        }
+    }, {
+        key: 'changeImage',
+        value: function changeImage(event, direction) {
+            if (direction == "right") {
+                this.faceImgs = arrayRotate(this.faceImgs);
+            } else {
+                this.faceImgs = arrayRotate(this.faceImgs, true);
+            }
+            this.setState({
+                image: 'img/' + this.faceImgs[0]
+            });
         }
     }]);
 
@@ -9692,6 +9755,12 @@ var PersonInfo = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = PersonInfo;
+
+
+function arrayRotate(arr, reverse) {
+    if (reverse) arr.unshift(arr.pop());else arr.push(arr.shift());
+    return arr;
+}
 
 /***/ }),
 /* 85 */
@@ -9726,11 +9795,7 @@ var Person = function (_React$Component) {
     function Person() {
         _classCallCheck(this, Person);
 
-        var _this = _possibleConstructorReturn(this, (Person.__proto__ || Object.getPrototypeOf(Person)).call(this));
-
-        _this.image = 'img/portrait.png';
-
-        return _this;
+        return _possibleConstructorReturn(this, (Person.__proto__ || Object.getPrototypeOf(Person)).call(this));
     }
 
     _createClass(Person, [{
@@ -9739,11 +9804,11 @@ var Person = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: "person person-" + this.props.parentProps.class },
-                _react2.default.createElement('img', { src: this.image, alt: '', className: 'img-responsive', onClick: this.props.toggleVisibility }),
+                _react2.default.createElement('img', { src: this.props.parentState.image, alt: '', className: 'img-responsive', onClick: this.props.toggleVisibility }),
                 _react2.default.createElement(
                     'div',
                     { className: 'person-name' },
-                    this.props.parentProps.name
+                    this.props.parentState.name
                 )
             );
         }
@@ -24892,3 +24957,4 @@ module.exports = traverseAllChildren;
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map
