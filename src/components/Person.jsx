@@ -11,6 +11,7 @@ class PersonInfoLook extends React.Component {
                     <img src={this.props.image} alt="" />
                 </div>
                 {this.props.isDead ? <img src="img/deadicon.png" alt="" className="dead-icon"/> : ""}
+                {this.props.isBlood ? <img src="img/blood-icon.png" alt="" className="blood-icon"/> : ""}
                 <div className="person-info-look-controls">
                     <button className="person-info-look-controls-left" onClick={(e) => this.props.changeImage(e, "left")}>
                         <i className="fa fa-arrow-left" aria-hidden="true"></i>
@@ -34,6 +35,7 @@ export default class PersonInfo extends React.Component {
         ],
             this.state = {
                 isDead: false,
+                isBlood:true,  //BloodRelative
                 isPersonInfoVisible: false,
                 name: props.name,
                 image: 'img/' + this.faceImgs[0]
@@ -49,7 +51,7 @@ export default class PersonInfo extends React.Component {
                     <button className="close-btn" onClick={this.handleVisibility.bind(this)}>
                         <img src="img/close-btn.png" alt="" />
                     </button>
-                    <PersonInfoLook image={this.state.image} isDead={this.state.isDead} changeImage={this.changeImage.bind(this)} />
+                    <PersonInfoLook image={this.state.image} isDead={this.state.isDead} isBlood ={this.state.isBlood} changeImage={this.changeImage.bind(this)} />
                     <div className="dead-blood">
                         <div className="dead">
                             Is Dead?
@@ -57,7 +59,7 @@ export default class PersonInfo extends React.Component {
                         </div>
                         <div className="blood">
                             Is Blood Relative?
-                            <input id="checkBox" type="checkbox" />
+                            <input id="checkBox" type="checkbox" defaultChecked onClick={(e) => this.toggleState(e, 'isBlood')}/>
                         </div>
                     </div>
                 </div>

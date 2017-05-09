@@ -9654,6 +9654,7 @@ var PersonInfoLook = function (_React$Component) {
                     _react2.default.createElement('img', { src: this.props.image, alt: '' })
                 ),
                 this.props.isDead ? _react2.default.createElement('img', { src: 'img/deadicon.png', alt: '', className: 'dead-icon' }) : "",
+                this.props.isBlood ? _react2.default.createElement('img', { src: 'img/blood-icon.png', alt: '', className: 'blood-icon' }) : "",
                 _react2.default.createElement(
                     'div',
                     { className: 'person-info-look-controls' },
@@ -9689,6 +9690,7 @@ var PersonInfo = function (_React$Component2) {
 
         _this3.faceImgs = ['portrait.png', 'portrait2.png', 'portrait3.png'], _this3.state = {
             isDead: false,
+            isBlood: true, //BloodRelative
             isPersonInfoVisible: false,
             name: props.name,
             image: 'img/' + _this3.faceImgs[0]
@@ -9714,7 +9716,7 @@ var PersonInfo = function (_React$Component2) {
                         { className: 'close-btn', onClick: this.handleVisibility.bind(this) },
                         _react2.default.createElement('img', { src: 'img/close-btn.png', alt: '' })
                     ),
-                    _react2.default.createElement(PersonInfoLook, { image: this.state.image, isDead: this.state.isDead, changeImage: this.changeImage.bind(this) }),
+                    _react2.default.createElement(PersonInfoLook, { image: this.state.image, isDead: this.state.isDead, isBlood: this.state.isBlood, changeImage: this.changeImage.bind(this) }),
                     _react2.default.createElement(
                         'div',
                         { className: 'dead-blood' },
@@ -9730,7 +9732,9 @@ var PersonInfo = function (_React$Component2) {
                             'div',
                             { className: 'blood' },
                             'Is Blood Relative?',
-                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox' })
+                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', defaultChecked: true, onClick: function onClick(e) {
+                                    return _this4.toggleState(e, 'isBlood');
+                                } })
                         )
                     )
                 )
