@@ -9840,15 +9840,20 @@ var Person = function (_React$Component) {
     _createClass(Person, [{
         key: 'render',
         value: function render() {
+            var parentProps = this.props.parentProps;
+            var parentState = this.props.parentState;
+
             return _react2.default.createElement(
                 'div',
-                { className: "person person-" + this.props.parentProps.class },
-                _react2.default.createElement('img', { src: this.props.parentState.image, alt: '', className: 'img-responsive', onClick: this.props.toggleVisibility }),
+                { className: "person person-" + parentProps.class },
+                _react2.default.createElement('img', { src: parentState.image, alt: '', className: 'img-responsive', onClick: this.props.toggleVisibility }),
                 _react2.default.createElement(
                     'div',
                     { className: 'person-name' },
-                    this.props.parentState.name
-                )
+                    parentState.name
+                ),
+                parentState.isDead ? _react2.default.createElement('img', { src: 'img/deadicon.png', alt: '', className: 'dead-icon' }) : "",
+                parentState.isBlood ? _react2.default.createElement('img', { src: 'img/blood-icon.png', alt: '', className: 'blood-icon' }) : ""
             );
         }
     }]);

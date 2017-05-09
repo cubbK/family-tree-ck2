@@ -7,10 +7,15 @@ export default class Person extends React.Component {
         
     }
     render() {
+        let parentProps = this.props.parentProps;
+        let parentState = this.props.parentState;
+
         return (
-            <div className={"person person-" + this.props.parentProps.class}>
-                <img src={this.props.parentState.image} alt="" className="img-responsive" onClick={this.props.toggleVisibility}/>
-                <div className="person-name">{this.props.parentState.name}</div>
+            <div className={"person person-" + parentProps.class}>
+                <img src={parentState.image} alt="" className="img-responsive" onClick={this.props.toggleVisibility}/>
+                <div className="person-name">{parentState.name}</div>
+                {parentState.isDead ? <img src="img/deadicon.png" alt="" className="dead-icon"/> : ""}
+                {parentState.isBlood ? <img src="img/blood-icon.png" alt="" className="blood-icon"/> : ""}
             </div>
         );
     }    
