@@ -9653,6 +9653,7 @@ var PersonInfoLook = function (_React$Component) {
                     { className: 'person-info-look-img' },
                     _react2.default.createElement('img', { src: this.props.image, alt: '' })
                 ),
+                this.props.isDead ? _react2.default.createElement('img', { src: 'img/deadicon.png', alt: '', className: 'dead-icon' }) : "",
                 _react2.default.createElement(
                     'div',
                     { className: 'person-info-look-controls' },
@@ -9687,7 +9688,7 @@ var PersonInfo = function (_React$Component2) {
         var _this3 = _possibleConstructorReturn(this, (PersonInfo.__proto__ || Object.getPrototypeOf(PersonInfo)).call(this));
 
         _this3.faceImgs = ['portrait.png', 'portrait2.png', 'portrait3.png'], _this3.state = {
-
+            isDead: false,
             isPersonInfoVisible: false,
             name: props.name,
             image: 'img/' + _this3.faceImgs[0]
@@ -9698,6 +9699,8 @@ var PersonInfo = function (_React$Component2) {
     _createClass(PersonInfo, [{
         key: 'render',
         value: function render() {
+            var _this4 = this;
+
             console.log(this.state.name);
             var person = _react2.default.createElement(
                 _reactDraggable2.default,
@@ -9711,7 +9714,25 @@ var PersonInfo = function (_React$Component2) {
                         { className: 'close-btn', onClick: this.handleVisibility.bind(this) },
                         _react2.default.createElement('img', { src: 'img/close-btn.png', alt: '' })
                     ),
-                    _react2.default.createElement(PersonInfoLook, { image: this.state.image, changeImage: this.changeImage.bind(this) })
+                    _react2.default.createElement(PersonInfoLook, { image: this.state.image, isDead: this.state.isDead, changeImage: this.changeImage.bind(this) }),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'dead-blood' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'dead' },
+                            'Is Dead?',
+                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', onClick: function onClick(e) {
+                                    return _this4.toggleState(e, 'isDead');
+                                } })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'blood' },
+                            'Is Blood Relative?',
+                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox' })
+                        )
+                    )
                 )
             );
             var personThumb = _react2.default.createElement(_PersonThumb2.default, { toggleVisibility: this.handleVisibility.bind(this), parentProps: this.props, parentState: this.state });
@@ -9749,6 +9770,14 @@ var PersonInfo = function (_React$Component2) {
             this.setState({
                 image: 'img/' + this.faceImgs[0]
             });
+        }
+    }, {
+        key: 'toggleState',
+        value: function toggleState(event, name) {
+            console.log(name);
+            var newState = {};
+            newState[name] = !this.state[name];
+            this.setState(newState);
         }
     }]);
 

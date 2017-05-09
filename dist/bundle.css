@@ -165,5 +165,20 @@
   color: #fd8636;
   outline: 0;
 }
+.dead-blood {
+  color: #222 2;
+  font-weight: 600;
+  position: absolute;
+  right: 140px;
+  top: 120px;
+}
+.dead-blood input {
+  background-color: transparent;
+}
+.dead-icon {
+  position: absolute;
+  top: 255px;
+  left: 175px;
+}
 
 /*# sourceMappingURL=bundle.css.map*/

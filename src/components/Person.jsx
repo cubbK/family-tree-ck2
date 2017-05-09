@@ -10,6 +10,7 @@ class PersonInfoLook extends React.Component {
                 <div className="person-info-look-img">
                     <img src={this.props.image} alt="" />
                 </div>
+                {this.props.isDead ? <img src="img/deadicon.png" alt="" className="dead-icon"/> : ""}
                 <div className="person-info-look-controls">
                     <button className="person-info-look-controls-left" onClick={(e) => this.props.changeImage(e, "left")}>
                         <i className="fa fa-arrow-left" aria-hidden="true"></i>
@@ -32,7 +33,7 @@ export default class PersonInfo extends React.Component {
             'portrait3.png'
         ],
             this.state = {
-
+                isDead: false,
                 isPersonInfoVisible: false,
                 name: props.name,
                 image: 'img/' + this.faceImgs[0]
@@ -48,7 +49,17 @@ export default class PersonInfo extends React.Component {
                     <button className="close-btn" onClick={this.handleVisibility.bind(this)}>
                         <img src="img/close-btn.png" alt="" />
                     </button>
-                    <PersonInfoLook image={this.state.image} changeImage={this.changeImage.bind(this)} />
+                    <PersonInfoLook image={this.state.image} isDead={this.state.isDead} changeImage={this.changeImage.bind(this)} />
+                    <div className="dead-blood">
+                        <div className="dead">
+                            Is Dead?
+                             <input id="checkBox" type="checkbox" onClick={(e) => this.toggleState(e, 'isDead')} />
+                        </div>
+                        <div className="blood">
+                            Is Blood Relative?
+                            <input id="checkBox" type="checkbox" />
+                        </div>
+                    </div>
                 </div>
             </Draggable>
         );
@@ -76,21 +87,27 @@ export default class PersonInfo extends React.Component {
         if (direction == "right") {
             this.faceImgs = arrayRotate(this.faceImgs);
         } else {
-             this.faceImgs = arrayRotate(this.faceImgs ,true);
+            this.faceImgs = arrayRotate(this.faceImgs, true);
         }
         console.log(this.faceImgs)
         this.setState({
             image: 'img/' + this.faceImgs[0]
         })
     }
+    toggleState(event, name) {
+        console.log(name)
+        let newState = {};
+        newState[name] = !this.state[name];
+        this.setState(newState);
+    }
 }
 
 function arrayRotate(arr, reverse) {
     if (reverse) {
-        console.log ("it;s true")
+        console.log("it;s true")
         arr.unshift(arr.pop())
     } else {
         arr.push(arr.shift())
-    }  
+    }
     return arr
 } 
