@@ -9653,7 +9653,7 @@ var PersonInfoLook = function (_React$Component) {
                     { className: 'person-info-look-img' },
                     _react2.default.createElement('img', { src: this.props.image, alt: '' })
                 ),
-                this.props.isDead ? _react2.default.createElement('img', { src: 'img/deadicon.png', alt: '', className: 'dead-icon' }) : "",
+                this.props.isDead ? _react2.default.createElement('img', { src: 'img/dead-icon.png', alt: '', className: 'dead-icon' }) : "",
                 this.props.isBlood ? _react2.default.createElement('img', { src: 'img/blood-icon.png', alt: '', className: 'blood-icon' }) : "",
                 _react2.default.createElement(
                     'div',
@@ -9724,7 +9724,7 @@ var PersonInfo = function (_React$Component2) {
                             'div',
                             { className: 'dead' },
                             'Is Dead?',
-                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', onClick: function onClick(e) {
+                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', defaultChecked: this.state.isDead, onClick: function onClick(e) {
                                     return _this4.toggleState(e, 'isDead');
                                 } })
                         ),
@@ -9732,7 +9732,7 @@ var PersonInfo = function (_React$Component2) {
                             'div',
                             { className: 'blood' },
                             'Is Blood Relative?',
-                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', defaultChecked: true, onClick: function onClick(e) {
+                            _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', defaultChecked: this.state.isBlood, onClick: function onClick(e) {
                                     return _this4.toggleState(e, 'isBlood');
                                 } })
                         )
@@ -9852,7 +9852,7 @@ var Person = function (_React$Component) {
                     { className: 'person-name' },
                     parentState.name
                 ),
-                parentState.isDead ? _react2.default.createElement('img', { src: 'img/deadicon.png', alt: '', className: 'dead-icon' }) : "",
+                parentState.isDead ? _react2.default.createElement('img', { src: 'img/dead-icon.png', alt: '', className: 'dead-icon' }) : "",
                 parentState.isBlood ? _react2.default.createElement('img', { src: 'img/blood-icon.png', alt: '', className: 'blood-icon' }) : ""
             );
         }
@@ -11221,6 +11221,20 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       return emptyFunction.thatReturnsNull;
     }
 
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        warning(
+          false,
+          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
+          'received %s at index %s.',
+          getPostfixForTypeWarning(checker),
+          i
+        );
+        return emptyFunction.thatReturnsNull;
+      }
+    }
+
     function validate(props, propName, componentName, location, propFullName) {
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
@@ -11353,6 +11367,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   // This handles more types than `getPropType`. Only used for error messages.
   // See `createPrimitiveTypeChecker`.
   function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
     var propType = getPropType(propValue);
     if (propType === 'object') {
       if (propValue instanceof Date) {
@@ -11362,6 +11379,23 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       }
     }
     return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
   }
 
   // Returns class name of the object, if any.

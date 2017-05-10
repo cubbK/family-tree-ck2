@@ -14,7 +14,7 @@ export default class Person extends React.Component {
             <div className={"person person-" + parentProps.class}>
                 <img src={parentState.image} alt="" className="img-responsive" onClick={this.props.toggleVisibility}/>
                 <div className="person-name">{parentState.name}</div>
-                {parentState.isDead ? <img src="img/deadicon.png" alt="" className="dead-icon"/> : ""}
+                {parentState.isDead ? <img src="img/dead-icon.png" alt="" className="dead-icon"/> : ""}
                 {parentState.isBlood ? <img src="img/blood-icon.png" alt="" className="blood-icon"/> : ""}
             </div>
         );

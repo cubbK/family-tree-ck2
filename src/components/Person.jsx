@@ -10,7 +10,7 @@ class PersonInfoLook extends React.Component {
                 <div className="person-info-look-img">
                     <img src={this.props.image} alt="" />
                 </div>
-                {this.props.isDead ? <img src="img/deadicon.png" alt="" className="dead-icon"/> : ""}
+                {this.props.isDead ? <img src="img/dead-icon.png" alt="" className="dead-icon"/> : ""}
                 {this.props.isBlood ? <img src="img/blood-icon.png" alt="" className="blood-icon"/> : ""}
                 <div className="person-info-look-controls">
                     <button className="person-info-look-controls-left" onClick={(e) => this.props.changeImage(e, "left")}>
@@ -55,11 +55,11 @@ export default class PersonInfo extends React.Component {
                     <div className="dead-blood">
                         <div className="dead">
                             Is Dead?
-                             <input id="checkBox" type="checkbox" onClick={(e) => this.toggleState(e, 'isDead')} />
+                             <input id="checkBox" type="checkbox" defaultChecked={this.state.isDead} onClick={(e) => this.toggleState(e, 'isDead')} />
                         </div>
                         <div className="blood">
                             Is Blood Relative?
-                            <input id="checkBox" type="checkbox" defaultChecked onClick={(e) => this.toggleState(e, 'isBlood')}/>
+                            <input id="checkBox" type="checkbox" defaultChecked={this.state.isBlood} onClick={(e) => this.toggleState(e, 'isBlood')}/>
                         </div>
                     </div>
                 </div>
