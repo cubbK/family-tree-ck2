@@ -9680,28 +9680,73 @@ var PersonInfoLook = function (_React$Component) {
     return PersonInfoLook;
 }(_react2.default.Component);
 
-var PersonInfo = function (_React$Component2) {
-    _inherits(PersonInfo, _React$Component2);
+var PersonInputStats = function (_React$Component2) {
+    _inherits(PersonInputStats, _React$Component2);
+
+    function PersonInputStats() {
+        _classCallCheck(this, PersonInputStats);
+
+        return _possibleConstructorReturn(this, (PersonInputStats.__proto__ || Object.getPrototypeOf(PersonInputStats)).apply(this, arguments));
+    }
+
+    _createClass(PersonInputStats, [{
+        key: 'render',
+        value: function render() {
+            var state = this.props.state;
+            return _react2.default.createElement(
+                'ul',
+                { className: 'person-input-stats' },
+                _react2.default.createElement(
+                    'li',
+                    null,
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'text' },
+                        'Birth :'
+                    ),
+                    _react2.default.createElement('input', { type: 'text', defaultValue: state.birth })
+                ),
+                _react2.default.createElement(
+                    'li',
+                    null,
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'text' },
+                        'Death :'
+                    ),
+                    _react2.default.createElement('input', { type: 'text', defaultValue: state.death })
+                )
+            );
+        }
+    }]);
+
+    return PersonInputStats;
+}(_react2.default.Component);
+
+var PersonInfo = function (_React$Component3) {
+    _inherits(PersonInfo, _React$Component3);
 
     function PersonInfo(props) {
         _classCallCheck(this, PersonInfo);
 
-        var _this3 = _possibleConstructorReturn(this, (PersonInfo.__proto__ || Object.getPrototypeOf(PersonInfo)).call(this));
+        var _this4 = _possibleConstructorReturn(this, (PersonInfo.__proto__ || Object.getPrototypeOf(PersonInfo)).call(this));
 
-        _this3.faceImgs = ['portrait.png', 'portrait2.png', 'portrait3.png'], _this3.state = {
+        _this4.faceImgs = ['portrait.png', 'portrait2.png', 'portrait3.png'], _this4.state = {
             isDead: false,
             isBlood: true, //BloodRelative
             isPersonInfoVisible: false,
             name: props.name,
-            image: 'img/' + _this3.faceImgs[0]
+            image: 'img/' + _this4.faceImgs[0],
+            birth: '1900',
+            death: '1900'
         };
-        return _this3;
+        return _this4;
     }
 
     _createClass(PersonInfo, [{
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             console.log(this.state.name);
             var person = _react2.default.createElement(
@@ -9725,7 +9770,7 @@ var PersonInfo = function (_React$Component2) {
                             { className: 'dead' },
                             'Is Dead?',
                             _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', defaultChecked: this.state.isDead, onClick: function onClick(e) {
-                                    return _this4.toggleState(e, 'isDead');
+                                    return _this5.toggleState(e, 'isDead');
                                 } })
                         ),
                         _react2.default.createElement(
@@ -9733,10 +9778,11 @@ var PersonInfo = function (_React$Component2) {
                             { className: 'blood' },
                             'Is Blood Relative?',
                             _react2.default.createElement('input', { id: 'checkBox', type: 'checkbox', defaultChecked: this.state.isBlood, onClick: function onClick(e) {
-                                    return _this4.toggleState(e, 'isBlood');
+                                    return _this5.toggleState(e, 'isBlood');
                                 } })
                         )
-                    )
+                    ),
+                    _react2.default.createElement(PersonInputStats, { state: this.state })
                 )
             );
             var personThumb = _react2.default.createElement(_PersonThumb2.default, { toggleVisibility: this.handleVisibility.bind(this), parentProps: this.props, parentState: this.state });

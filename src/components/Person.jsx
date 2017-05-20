@@ -25,6 +25,29 @@ class PersonInfoLook extends React.Component {
     }
 }
 
+class PersonInputStats extends React.Component {
+    render() {
+        let state = this.props.state;
+        return (
+            <ul className="person-input-stats">
+                <li>
+                    <div className="text">
+                        Birth :
+                    </div>
+                    
+                    <input type="text" defaultValue={state.birth}  />
+                </li>
+                <li>
+                    <div className="text">
+                        Death :
+                    </div>
+                    <input type="text" defaultValue={state.death}  />
+                </li>
+            </ul>
+        );
+    }
+}
+
 export default class PersonInfo extends React.Component {
     constructor(props) {
         super();
@@ -38,7 +61,9 @@ export default class PersonInfo extends React.Component {
                 isBlood:true,  //BloodRelative
                 isPersonInfoVisible: false,
                 name: props.name,
-                image: 'img/' + this.faceImgs[0]
+                image: 'img/' + this.faceImgs[0],
+                birth: '1900',
+                death : '1900',
             }
     }
 
@@ -62,6 +87,7 @@ export default class PersonInfo extends React.Component {
                             <input id="checkBox" type="checkbox" defaultChecked={this.state.isBlood} onClick={(e) => this.toggleState(e, 'isBlood')}/>
                         </div>
                     </div>
+                    <PersonInputStats state={this.state}/>
                 </div>
             </Draggable>
         );
