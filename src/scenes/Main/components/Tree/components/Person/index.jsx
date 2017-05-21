@@ -1,52 +1,12 @@
 import React from 'react';
 import Draggable from 'react-draggable'; // The default 
-import PersonThumb from '../PersonThumb/PersonThumb.jsx';
+import PersonThumb from './components/PersonThumb/PersonThumb.jsx';
+import PersonInputStats from './components/PersonInputStats/index.jsx';
+import PersonLook from './components/PersonLook/index.jsx';
 
+var requireContext = require.context("./img", true, /^\.\/.*\.png$/); // Requires all pngs from img folder
+requireContext.keys().map(requireContext);
 
-class PersonInfoLook extends React.Component {
-    render() {
-        return (
-            <div className="person-info-look">
-                <div className="person-info-look-img">
-                    <img src={this.props.image} alt="" />
-                </div>
-                {this.props.isDead ? <img src="img/dead-icon.png" alt="" className="dead-icon"/> : ""}
-                {this.props.isBlood ? <img src="img/blood-icon.png" alt="" className="blood-icon"/> : ""}
-                <div className="person-info-look-controls">
-                    <button className="person-info-look-controls-left" onClick={(e) => this.props.changeImage(e, "left")}>
-                        <i className="fa fa-arrow-left" aria-hidden="true"></i>
-                    </button>
-                    <button className="person-info-look-controls-right" onClick={(e) => this.props.changeImage(e, "right")}>
-                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        );
-    }
-}
-
-class PersonInputStats extends React.Component {
-    render() {
-        let state = this.props.state;
-        return (
-            <ul className="person-input-stats">
-                <li>
-                    <div className="text">
-                        Birth :
-                    </div>
-                    
-                    <input type="text" defaultValue={state.birth}  />
-                </li>
-                <li>
-                    <div className="text">
-                        Death :
-                    </div>
-                    <input type="text" defaultValue={state.death}  />
-                </li>
-            </ul>
-        );
-    }
-}
 
 export default class PersonInfo extends React.Component {
     constructor(props) {
@@ -76,7 +36,7 @@ export default class PersonInfo extends React.Component {
                     <button className="close-btn" onClick={this.handleVisibility.bind(this)}>
                         <img src="img/close-btn.png" alt="" />
                     </button>
-                    <PersonInfoLook image={this.state.image} isDead={this.state.isDead} isBlood ={this.state.isBlood} changeImage={this.changeImage.bind(this)} />
+                    <PersonLook image={this.state.image} isDead={this.state.isDead} isBlood ={this.state.isBlood} changeImage={this.changeImage.bind(this)} />
                     <div className="dead-blood">
                         <div className="dead">
                             Is Dead?
@@ -132,7 +92,6 @@ export default class PersonInfo extends React.Component {
 
 function arrayRotate(arr, reverse) {
     if (reverse) {
-        console.log("it;s true")
         arr.unshift(arr.pop())
     } else {
         arr.push(arr.shift())

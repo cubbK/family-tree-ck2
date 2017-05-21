@@ -1,6 +1,7 @@
 import React from 'react';
 import TreeGenerations from './components/GenerationsList/index.jsx';
 import Tree from './components/Tree/index.jsx';
+import githubLogo from './img/github-logo.png';
 export default class TreeView extends React.Component {
     render() {
         return (
