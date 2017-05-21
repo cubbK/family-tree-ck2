@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TreeView from './scenes/Main/index.jsx';
+import TreeView from './components/TreeView.jsx';
 require('./styles/index.styl');
 
 
@@ -9,7 +9,7 @@ class Main extends React.Component {
     return (
       <div>
         <TreeView/>
-        <h1>HEy dudee Pal</h1>
+        <h1>HEy dudee</h1>
       </div>
     );
   }
