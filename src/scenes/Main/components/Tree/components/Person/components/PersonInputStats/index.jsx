@@ -1,5 +1,6 @@
 import React from 'react';
 export default class PersonInputStats extends React.Component {
+    
     render() {
         let state = this.props.state;
         return (
@@ -8,8 +9,7 @@ export default class PersonInputStats extends React.Component {
                     <div className="text">
                         Birth :
                     </div>
-                    
-                    <input type="text" defaultValue={state.birth}  />
+                    <input type="text" value={state.birth} onChange={(e) => this.props.handleDateInput(e, 'birth') } />
                 </li>
                 <li>
                     <div className="text">
