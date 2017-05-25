@@ -1,4 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800);body {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800);.custom {
+  background: #f00;
+  height: 50px;
+  width: 50px;
+}
+body {
   font-family: 'Open Sans', sans-serif;
   max-width: 100%;
 }
@@ -217,14 +222,29 @@
   font-weight: 700;
 }
 .person-input-stats .text,
-.person-input-stats input {
+.person-input-stats .form-group {
   display: inline-block;
   font-size: 14px;
   width: 50%;
+  height: 25.5px;
+  margin-bottom: 0;
+}
+.person-input-stats .form-control {
   text-align: center;
   background: transparent;
-  border: 0;
   height: 25.5px;
+  color: #222;
+  border: 0;
+}
+.person-input-stats .text {
+  text-align: left;
+}
+.autocomplete-container {
+  color: #000 !important;
+  background-color: #f00 !important;
+}
+.autocomplete-item {
+  color: #000;
 }
 
 /*# sourceMappingURL=bundle.css.map*/

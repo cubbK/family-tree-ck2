@@ -24,7 +24,7 @@ module.exports = {
       {
         test: /\.styl$/,
         use: ExtractTextPlugin.extract({
-          use: "css-loader!stylus-loader"
+          use: "css-loader!?importLoaders=1&localIdentName=[local]_[hash:base64:5]!postcss!stylus-loader"
         })
       },
       {
