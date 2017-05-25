@@ -1,5 +1,4 @@
 import React from 'react';
-require('../img/portrait.png');
 
 export default class Person extends React.Component {
     constructor(){

@@ -1,5 +1,5 @@
 import React from 'react';
-import Person from './Person.jsx';
+import Person from './components/Person/index.jsx';
 
 export default class Tree extends React.Component {
     constructor() {
